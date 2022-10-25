@@ -1,0 +1,35 @@
+apply from: 'versions.gradle'
+apply from: 'libs.gradle'
+apply from: 'testLibs.gradle'
+apply from: 'testDependencies.gradle'
+apply from: 'dependencies.gradle'
+
+
+buildscript {
+
+    ext.kotlinVersion = '1.6.21'
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+
+
+    }
+}
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
