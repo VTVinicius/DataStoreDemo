@@ -37,7 +37,7 @@ class ExampleFragment : BaseFragment<FragmentExampleBinding>() {
                 binding.textView.text = it
             },
             onError = {
-
+                showErrorDialog()
             }
         )
         viewModel.getAgeViewState.onPostValue(owner,
@@ -45,7 +45,7 @@ class ExampleFragment : BaseFragment<FragmentExampleBinding>() {
                 binding.textView2.text = it.toString()
             },
             onError = {
-
+                showErrorDialog()
             }
         )
     }
