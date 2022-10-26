@@ -22,7 +22,8 @@ ext {
             [configuration: "annotationProcessor", dependency: "$glideAnnotation"],
             [configuration: "implementation", dependency: "$flexbox"],
             [configuration: "implementation", dependency: "$gson"],
-            [configuration: "implementation", dependency: "$swiperefreshlayout"]
+            [configuration: "implementation", dependency: "$swiperefreshlayout"],
+            [configuration: "implementation", dependency: "$dataStore"]
     ]
 
     intentDependencies = appDependencies + [
@@ -66,7 +67,8 @@ ext {
             [configuration: "kapt", dependency: "$roomCompiler"],
             [configuration: "implementation", dependency: "$roomKtx"],
             [configuration: "implementation", dependency: "$roomRx"],
-            [configuration: "implementation", dependency: "$sqlite"]
+            [configuration: "implementation", dependency: "$sqlite"],
+            [configuration: "implementation", dependency: "$dataStore"]
     ]
 
     dataRemoteDependencies = dataDependencies + [

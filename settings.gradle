@@ -1,4 +1,4 @@
-rootProject.name = "Base Application"
+rootProject.name = "DataStore Application"
 include ':app'
 include ':base_feature'
 include ':data'

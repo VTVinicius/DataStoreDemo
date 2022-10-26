@@ -51,4 +51,8 @@ ext {
 
     //sqlite
     sqlite = "androidx.sqlite:sqlite:$sqliteVersion"
+
+    //DataStore
+    dataStore = "androidx.datastore:datastore-preferences:$dataStoreVersion"
+
 }

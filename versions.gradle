@@ -45,4 +45,7 @@ ext {
     roomVersion = "2.2.5"
     sqliteVersion = "2.1.0"
 
+    //DataStore
+    dataStoreVersion = "1.0.0-alpha02"
+
 }
