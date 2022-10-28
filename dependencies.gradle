@@ -5,7 +5,8 @@ ext {
             [configuration: "implementation", dependency: "$kotlinReflect"],
             [configuration: "implementation", dependency: "$androidKtxCore"],
             [configuration: "implementation", dependency: "$coroutine"],
-            [configuration: "implementation", dependency: "$koinScope"]
+            [configuration: "implementation", dependency: "$koinScope"],
+            [configuration: "implementation", dependency: "$serialization"]
     ]
 
     appDependencies = commonsDependencies + testAppDependencies + [
@@ -62,6 +63,7 @@ ext {
     ]
 
     dataLocalDependencies = dataDependencies + testDataLocalDependencies +[
+            [configuration: "implementation", dependency: "$securityCrypto"],
             [configuration: "implementation", dependency: "$gson"],
             [configuration: "implementation", dependency: "$gsonConvertFacotory"],
             [configuration: "kapt", dependency: "$roomCompiler"],

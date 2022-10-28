@@ -4,6 +4,7 @@ ext {
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion"
 
     //androidx
     appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
@@ -54,5 +55,9 @@ ext {
 
     //DataStore
     dataStore = "androidx.datastore:datastore-preferences:$dataStoreVersion"
+
+
+    //security
+    securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
 
 }
