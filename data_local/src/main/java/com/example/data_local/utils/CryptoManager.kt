@@ -70,7 +70,7 @@ class CryptoManager {
             it.read(iv)
 
             val encryptedBytesSize = it.read()
-            val encryptedBytes = ByteArray(encryptedBytesSize)
+            val encryptedBytes = ByteArray(encryptedBytesSize +1)
             it.read(encryptedBytes)
 
             getDecryptCipherForIv(iv).doFinal(encryptedBytes)

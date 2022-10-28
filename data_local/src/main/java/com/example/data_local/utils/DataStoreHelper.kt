@@ -7,12 +7,12 @@ import androidx.datastore.preferences.createDataStore
 import androidx.datastore.preferences.edit
 import androidx.datastore.preferences.preferencesKey
 import kotlinx.coroutines.flow.first
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 class DataStoreHelper(
-   val context: Context
+    val context: Context
 ) {
 
     private var dataStore: DataStore<Preferences> = context.createDataStore(name = "settings")
@@ -23,18 +23,16 @@ class DataStoreHelper(
 
 
     suspend fun saveString(key: String, value: String) {
-        val file = File(context.filesDir,"$key.txt")
-        if (!file.exists()) {
-            file.createNewFile()
-        }
-        val fos = FileOutputStream(file)
+
+        val stream = ByteArrayOutputStream()
+
         stringToEncrypt = value
 
         val bytes = stringToEncrypt.encodeToByteArray()
 
         stringToDecrypt = cryptoManager.encrypt(
             bytes = bytes,
-            outputStream = fos
+            outputStream = stream
         ).decodeToString()
 
         val dataStoreKey = preferencesKey<String>(key)
@@ -45,14 +43,19 @@ class DataStoreHelper(
 
     suspend fun readString(key: String): String? {
 
-        val file = File(context.filesDir, "$key.txt")
-        stringToEncrypt = cryptoManager.decrypt(
-            inputStream = FileInputStream(file)
-        ).decodeToString()
-
         val dataStoreKey = preferencesKey<String>(key)
         val preferences = dataStore.data.first()
-        return preferences[dataStoreKey]
+
+        //initialize an InputStream
+        val inputStream: InputStream = ByteArrayInputStream(preferences[dataStoreKey]?.toByteArray())
+
+        val decryptedBytes = cryptoManager.decrypt(inputStream)
+
+        val decoded = decryptedBytes.decodeToString()
+
+        decoded
+
+        return decoded
     }
 
     suspend fun saveInt(key: String, value: Int) {
